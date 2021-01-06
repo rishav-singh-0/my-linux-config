@@ -13,4 +13,6 @@ I used release touchegg_2.0.5_amd64 which is provided here.
 
 ## To use these coniguration directly:
 
-`cp ./touchegg/touchegg.conf ~/.config/touchegg/touchegg.conf`
+`mkdir -p ~/.config/touchegg `
+
+`cp -n ./touchegg/touchegg.conf ~/.config/touchegg/touchegg.conf`
