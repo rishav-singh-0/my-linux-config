@@ -7,6 +7,31 @@ The “vimrc” (Vim resource configuration) file provides initialization settin
 --> To see the content files you might have to enable hidden files
 
 ## Use this configuration:
-Just copy everyhing in this directory to home folder(linux users)
 
 `mkdir ~/.cache/vim`
+
+### Basic Configuration:
+`cp ./basic.vim ~/.vimrc`
+
+### Main Configuration:
+
+`cp ./main.vim ~/.vimrc`
+
+install vim-plug from [here](https://github.com/junegunn/vim-plug).
+
+OR
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+Once done then open vim and type `:PlugInstall` in command mode.
+This should install required plugins. 
+
+
+#### Fonts:
+```
+mkdir ~/.local/share/fonts
+cp ./FuraMono-Regular-Powerline.otf ~/.local/share/fonts/FuraMono-Regular-Powerline.otf
+fc-cache -f -v
+```
+After this select FuraMono-Regular-Powerline font from preferences.
