@@ -724,10 +724,10 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 
 -- Autostart Applications
-awful.spawn.with_shell("nitrogen --set-scaled --random")
+-- awful.spawn.with_shell("nitrogen --set-scaled --random")
 -- awful.spawn.with_shell("touchegg")
 awful.spawn.with_shell("compton")
-awful.spawn.with_shell("bash /home/rishav/imp_commands.sh")
+-- awful.spawn.with_shell("bash /home/rishav/imp_commands.sh")
 
 -- Gaps
 -- beautiful.useless_gap = 5
