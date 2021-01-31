@@ -11,7 +11,7 @@ sudo apt install awesome suckless-tools compton
 git clone https://github.com/rishav-singh-0/my-linux-config
 cd my-linux-config/awesome
 mkdir ~/.config/awesome
-cp -r ../awesome ~/.config/awesome
+cp -r ../awesome ~/.config/
 
 ```
 
