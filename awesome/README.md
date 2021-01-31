@@ -1,4 +1,5 @@
 # Awesome Window Manager 
+![Powerarrow Dark](https://github.com/rishav-singh-0/my-linux-config/blob/main/screenshots/Screenshot%20from%202021-01-31%2011-24-24.jpg?raw=true)
 
 ## Recommended / Dependencies
 ```
@@ -34,9 +35,13 @@ cp -r ../awesome ~/.config/awesome
 - On-the-fly useless gaps resize
 - Dynamic tagging
 
-### Theme: **Powerarrow Dark**
-
-image:: http://dotshare.it/public/images/uploads/649.jpg
+## Default software used:
+These are the applications i have used and most of em are preinstalled on any popular linux distro ofcource you can change any of it and dont use any if you want
+   - **dmenu** for launching applications
+   - **chrome** for browsing internet
+   - **nautilus** for file browsing
+   - **mpc & alsa** for sound
+   - **slock** for screenlocking 
 
 ## Usage
 
@@ -53,6 +58,4 @@ In ``theme.lua`` you can:
 * configure widgets
 * define wiboxes and screen settings
 
-Default software used:
 
-   - dmenu chrome mpc slock (Totally optional)
