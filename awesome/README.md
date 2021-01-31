@@ -3,7 +3,7 @@
 
 ## Recommended / Dependencies
 ```
-sudo apt install awesome suckless-tools nitrogen compton
+sudo apt install awesome suckless-tools compton
 ```
 
 ## Installation / Configuration
@@ -42,6 +42,7 @@ These are the applications i have used and most of em are preinstalled on any po
    - **nautilus** for file browsing
    - **mpc & alsa** for sound
    - **slock** for screenlocking 
+   - **alacritty** as terminal
 
 ## Usage
 
