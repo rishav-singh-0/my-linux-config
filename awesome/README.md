@@ -3,7 +3,7 @@
 
 ## Recommended / Dependencies
 ```
-sudo apr install awesome suckles-tools nitrogen compton
+sudo apt install awesome suckless-tools nitrogen compton
 ```
 
 ## Installation / Configuration
