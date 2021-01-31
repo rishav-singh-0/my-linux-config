@@ -1,5 +1,11 @@
 # Awesome Window Manager 
 
+## Recommended / Dependencies
+```
+sudo apr install awesome suckles-tools nitrogen compton
+```
+
+## Installation / Configuration
 ```
 git clone https://github.com/rishav-singh-0/my-linux-config
 cd my-linux-config/awesome
@@ -8,12 +14,11 @@ cp -r ../awesome ~/.config/awesome
 
 ```
 
-# Features
+## Features
 
 - Modularity
 - Autohide widgets
-- Autostart windowless processes
-- Fast MPD and volume shortcuts (first time this trick has been used in Awesome)
+- Fast brightness and volume shortcuts 
 - Shortcuts for copying to the clipboard, toggle wiboxes, widgets popups, screenshots capture, moving and magnifying clients
 - Quake drop-down terminal(optional)
 - Calendar with current day highlighted and months switch with a click/scroll
@@ -29,11 +34,11 @@ cp -r ../awesome ~/.config/awesome
 - On-the-fly useless gaps resize
 - Dynamic tagging
 
-## Theme: **Powerarrow Dark**
+### Theme: **Powerarrow Dark**
 
 image:: http://dotshare.it/public/images/uploads/649.jpg
 
-# Usage
+## Usage
 
 Its totally formed modular structure
 
@@ -50,4 +55,4 @@ In ``theme.lua`` you can:
 
 Default software used:
 
-   - dmenu chrome mpc mpd scrot unclutter xsel slock (Totally optional)
+   - dmenu chrome mpc slock (Totally optional)
