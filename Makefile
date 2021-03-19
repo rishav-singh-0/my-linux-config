@@ -38,7 +38,7 @@ music: ## Setting ncmpcpp, mpd, mpc for music stuff
 	cp -r ${PWD}/.config/ncmpcpp ${CONF}/
 
 bluetooth-music: ## Bluetooth audio config
-	sudo pacman -S pulseaudio pulseaudio-bluetooth bluez-utils
+	sudo pacman -S pulseaudio pulseaudio-bluetooth bluez-utils bluez-hid2hci
 	sudo rfkill unblock bluetooth
 	modprobe btusb
 	sudo systemctl enable bluetooth.service
