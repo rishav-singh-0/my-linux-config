@@ -1,55 +1,30 @@
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
+
+#  _               _
+# | |__   __ _ ___| |__  _ __ ___
+# | '_ \ / _` / __| '_ \| '__/ __|
+# | |_) | (_| \__ \ | | | | | (__
+# |_.__/ \__,_|___/_| |_|_|  \___|
+
+
+# History Control
 HISTCONTROL=ignoreboth
-
-
 shopt -s histappend         # append to the history file, don't overwrite it
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=HISTFILESIZE=1000000      # Infinite history
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
+# Prompt
+export PS1="\[\033[38;5;160m\][\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;208m\]\u\[$(tput sgr0)\]\[\033[38;5;70m\]@\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;39m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;227m\]\w\[$(tput sgr0)\]\[\033[38;5;160m\]]\[$(tput sgr0)\]\[\033[38;5;120m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
-
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# common shell aliases
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# enable programmable completion features (you don't need to enablethis, if it's already enabled in /etc/bash.bashrc and /etc/profile sources /etc/bash.bashrc)
+se current buffer
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+  [ -f /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
+  [ -f /etc/bash_completion ] && . /etc/bash_completion
 fi
 
 # source /opt/ros/melodic/setup.bash
 # source ~/catkin_ws/devel/setup.bash
 
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
+# common shell aliases
+[ -f ~/.scripts/shell_aliases.sh ] && . ~/.scripts/shell_aliases.sh
 
-# source /home/rishav/Public/alacritty/extra/completions/alacritty.bash
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.config/fzf/fzf.bash ] && source ~/.config/fzf/fzf.bash
