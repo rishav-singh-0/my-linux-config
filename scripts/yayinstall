@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+yayinstall=$(sed 's/\n/ /g' <<< $(yay -Slq | fzf -m --preview 'yay -Si {1}'))
+if [ ! -z "$yayinstall" ]; then
+  yay -S $yayinstall
+fi
+unset yayinstall

@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+pacinstall=$(sed 's/\n/ /g' <<< $(pacman -Slq | fzf -m --preview 'pacman -Si {1}'))
+if [ ! -z "$pacinstall" ]; then
+  sudo pacman -S $pacinstall
+fi
+unset pacinstall
