@@ -7,6 +7,19 @@
 - cool aliases
 - handy shortcuts
 
+## Installation
+Follow following commands for installation
+```
+# assuming you ar in my-linux-config directory
+cp ./zsh ~/.config/
+
+# backing up previous .zshrc file if present
+[ -f ~/.zshrc] && mv ~/.zshrc ~/.zshrc.backup
+
+# linking new zshrc
+ln -s ~/.config/zsh/zshrc ~/.zshrc
+```
+
 ## Recomendations
 I recommend to install some programs which I have already integrated some keybindings.
 
