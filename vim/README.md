@@ -25,13 +25,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 Once done then open vim and type `:PlugInstall` in command mode.
-This should install required plugins. 
+This should install required plugins.
 
 
 #### Fonts:
-```
-mkdir ~/.local/share/fonts
-cp ./FuraMono-Regular-Powerline.otf ~/.local/share/fonts/FuraMono-Regular-Powerline.otf
-fc-cache -f -v
-```
-After this select FuraMono-Regular-Powerline font from preferences.
+Follow [this guide](../fonts/Readme.md) for fonts
+
+After this select FuraMono-Regular-Powerline font from preferences of your terminal emulator.
