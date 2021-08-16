@@ -25,8 +25,10 @@ I recommend to install some programs which I have already integrated some keybin
 
 ### Debian based 
 ```
-sudo apt install ranger exa fzf 
+sudo apt install ranger
 ```
+For `exa`, refer: https://github.com/ogham/exa/#installation
+For `fzf`, refer: https://github.com/junegunn/fzf#installation
 
 ### Arch based
 ```
