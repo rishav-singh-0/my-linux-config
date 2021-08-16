@@ -8,6 +8,9 @@
 - handy shortcuts
 
 ## Installation
+
+### Method 1
+
 Follow following commands for installation
 ```
 # assuming you ar in my-linux-config directory
@@ -19,13 +22,21 @@ cp -r ./zsh ~/.config/
 # linking new zshrc
 ln -s ~/.config/zsh/zshrc ~/.zshrc
 ```
+### Method 2: Smart way
+Change value of `ZDOTDIR` while login
+We can do this by writing following line in `.bash_profile` file
+```
+export ZDOTDIR=~/.config/zsh
+```
+> Note: `.bash_profile` file should be sourced while login, or you can put this line in 
+> any file/script which is been executed while login
 
 ## Recomendations
 I recommend to install some programs which I have already integrated some keybindings.
 
 ### Debian based 
 ```
-sudo apt install ranger
+sudo apt install ranger neovim
 ```
 For `exa`, refer: https://github.com/ogham/exa/#installation
 
@@ -33,7 +44,7 @@ For `fzf`, refer: https://github.com/junegunn/fzf#installation
 
 ### Arch based
 ```
-sudo pacman -S ranger exa fzf fd 
+sudo pacman -S ranger exa fzf fd neovim
 ```
 
 ## Key Bindings
@@ -42,6 +53,8 @@ sudo pacman -S ranger exa fzf fd
 - **Ctrl + e** : Edit current command in editor(default is `nvim`)
 - **Ctrl + o** : Launches `lf` in current directory and changes dir to the last visited dir
 - **Ctrl + f** : Finds file through `fzf` and changes directory to selected file
+- **Ctrl + r** : Search in history using `fzf`
+- **Ctrl + k** : Read manual page for specific command eg. foo --> man foo
 
 ### Arch specific bindings
 
