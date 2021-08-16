@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export ZDOTDIR=~/.config/zsh
+
 # some useful options (man zshoptions)
 setopt nomatch
 setopt auto_cd              # Automatically cd into typed directory.
@@ -14,7 +16,6 @@ zle_highlight=('paste:none')
 
 # beeping is annoying
 unsetopt BEEP
-
 
 # completions
 autoload -Uz compinit
