@@ -1,4 +1,5 @@
 # Zsh Configurations
+![zsh config](https://github.com/rishav-singh-0/my-linux-config/blob/main/screenshots/zsh0.png?raw=true)
 
 ## Features
 - minimal
@@ -28,13 +29,13 @@ We can do this by writing following line in `.bash_profile` file
 ```
 export ZDOTDIR=~/.config/zsh
 ```
-> Note: `.bash_profile` file should be sourced while login, or you can put this line in 
+> Note: `.bash_profile` file should be sourced while login, or you can put this line in
 > any file/script which is been executed while login
 
 ## Recomendations
 I recommend to install some programs which I have already integrated some keybindings.
 
-### Debian based 
+### Debian based
 ```
 sudo apt install ranger neovim
 ```

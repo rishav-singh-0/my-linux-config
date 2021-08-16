@@ -1,5 +1,5 @@
-# Awesome Window Manager 
-![Powerarrow Dark](https://github.com/rishav-singh-0/my-linux-config/blob/main/screenshots/Screenshot%20from%202021-01-31%2011-24-24.jpg?raw=true)
+# Awesome Window Manager
+![Powerarrow Dark](https://github.com/rishav-singh-0/my-linux-config/blob/main/screenshots/awesome-wm.jpg?raw=true)
 
 ## Recommended / Dependencies
 ```
@@ -19,7 +19,7 @@ cp -r ../awesome ~/.config/
 
 - Modularity
 - Autohide widgets
-- Fast brightness and volume shortcuts 
+- Fast brightness and volume shortcuts
 - Shortcuts for copying to the clipboard, toggle wiboxes, widgets popups, screenshots capture, moving and magnifying clients
 - Quake drop-down terminal(optional)
 - Calendar with current day highlighted and months switch with a click/scroll
@@ -41,7 +41,7 @@ These are the applications i have used and most of em are preinstalled on any po
    - **chrome** for browsing internet
    - **nautilus** for file browsing
    - **mpc & alsa** for sound
-   - **slock** for screenlocking 
+   - **slock** for screenlocking
    - **alacritty** as terminal
 
 ## Usage
