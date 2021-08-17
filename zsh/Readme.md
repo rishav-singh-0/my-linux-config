@@ -63,5 +63,5 @@ sudo pacman -S ranger exa fzf fd neovim
 
 ### Arch specific bindings
 
-- **Ctrl + p** : Launches pacinstall script which use `fzf` and `pacman` package manager to search and install program
+- **Ctrl + p** : Launches aptinstall script which use `fzf` and `pacman` package manager to search and install program
 - **Ctrl + y** : Launches yayinstall script which use `fzf` and `yay` package manager to search and install program
