@@ -65,3 +65,8 @@ sudo pacman -S ranger exa fzf fd neovim
 
 - **Ctrl + p** : Launches aptinstall script which use `fzf` and `pacman` package manager to search and install program
 - **Ctrl + y** : Launches yayinstall script which use `fzf` and `yay` package manager to search and install program
+
+## Troubleshooting
+
+### Fonts/Icons not displayed properly
+Follow [this guide](../fonts/) to install the fonts which i am using
