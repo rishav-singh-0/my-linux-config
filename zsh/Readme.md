@@ -57,6 +57,10 @@ sudo pacman -S ranger exa fzf fd neovim
 - **Ctrl + r** : Search in history using `fzf`
 - **Ctrl + k** : Read manual page for specific command eg. foo --> man foo
 
+### Debian specific bindings
+
+- **Ctrl + a** : Launches pacinstall script which use `fzf` and `apt` package manager to search and install program
+
 ### Arch specific bindings
 
 - **Ctrl + p** : Launches pacinstall script which use `fzf` and `pacman` package manager to search and install program
