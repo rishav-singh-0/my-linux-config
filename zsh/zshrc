@@ -49,14 +49,11 @@ zsh_add_completion "esc/conda-zsh-completion" false
 
 # Key-bindings
 bindkey -s '^n' 'nvim $(fzf)^M'
-bindkey -s '^v' 'nvim\n'
 bindkey '^[[P' delete-char
-bindkey "^p" up-line-or-beginning-search # Up
-bindkey "^n" down-line-or-beginning-search # Down
-bindkey "^k" up-line-or-beginning-search # Up
-bindkey "^j" down-line-or-beginning-search # Down
-bindkey -r "^u"
-bindkey -r "^d"
+# bindkey "^p" up-line-or-beginning-search # Up
+# bindkey "^n" down-line-or-beginning-search # Down
+# bindkey "^k" up-line-or-beginning-search # Up
+# bindkey "^j" down-line-or-beginning-search # Down
 
 # Move with ctrl + arrows
 bindkey '^[[1;5C' forward-word          # ctrl right arrow
@@ -77,7 +74,7 @@ bindkey -s '^@' 'ranger^M'
 # Search packages in Package manager
 bindkey -s '^p' 'pacinstall^M'
 bindkey -s '^y' 'yayinstall^M'
-
+bindkey -s '^a' 'aptinstall^M'
 
 # ROS Melodic Specific
 [ -f /opt/ros/melodic/setup.zsh ] && \
@@ -85,16 +82,8 @@ bindkey -s '^y' 'yayinstall^M'
     source ~/catkin_ws/devel/setup.zsh
 
 # Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp" >/dev/null
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
 bindkey -s '^o' 'lfcd^M'
+
 bindkey -s '^a' 'bc -lq^M'
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"^M'
 

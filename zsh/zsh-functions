@@ -5,7 +5,7 @@ function zsh_add_file() {
 
 function zsh_add_plugin() {
     PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
-    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
+    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then
         # For plugins
         zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
         zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
@@ -16,7 +16,7 @@ function zsh_add_plugin() {
 
 function zsh_add_completion() {
     PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
-    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
+    if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then
         # For completions
 		completion_file_path=$(ls $ZDOTDIR/plugins/$PLUGIN_NAME/_*)
 		fpath+="$(dirname "${completion_file_path}")"
@@ -29,3 +29,40 @@ function zsh_add_completion() {
 	completion_file="$(basename "${completion_file_path}")"
 	if [ "$2" = true ] && compinit "${completion_file:1}"
 }
+
+# Use lf to switch directories and bind it to ctrl-o
+function lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp" >/dev/null
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+
+# Using fzf to select pacman packages to install or search
+function pacinstall(){
+    packages=$(sed 's/\n/ /g' <<< $(pacman -Slq | fzf -m --preview 'pacman -Si {1}'))
+    if [ ! -z "$packages" ]; then
+        sudo pacman -S $packages
+    fi
+}
+
+# Using fzf to select yay packages to install or search
+function yayinstall(){
+    packages=$(sed 's/\n/ /g' <<< $(yay -Slq | fzf -m --preview 'yay -Si {1}'))
+    if [ ! -z "$packages" ]; then
+        sudo yay -S $packages
+    fi
+}
+
+# Using fzf to select apt packages to install or search
+function aptinstall(){
+    packages=$(sed -z 's/\n/ /g' <<< $(apt-cache pkgnames | fzf -m --preview 'apt show {1}'))
+    apt-cache pkgnames | fzf -m --preview 'apt show {1}' | sed -z 's/\n/ /g'
+    if [ ! -z "$packages" ]; then
+        sudo apt install $packages
+    fi
+}
+
