@@ -6,12 +6,12 @@
 <!-- [![ForTheBadge built-with-swag](http://ForTheBadge.com/images/badges/built-with-swag.svg)](https://github.com/rishav-singh-0/)
 [![Bash Shell](https://badges.frapsoft.com/bash/v1/bash.png?v=103)](https://github.com/rishav-singh-0/my-linux-config/) -->
 
-![intro](https://github.com/rishav-singh-0/my-linux-config/blob/main/screenshots/intro-0.png?raw=true)
+![intro](https://github.com/rishav-singh-0/my-linux-config/blob/main/screenshots/intro-1.png?raw=true)
 
 These are some of the configurations which I use, feel free to make it your own.
 
 ## Installation
-You will need `git` 
+You will need `git`
 
 ```
 git clone https://github.com/rishav-singh-0/my-linux-config.git
@@ -34,7 +34,7 @@ Terminal music player. See [this](./ncmpcpp) for more detail.
 ### touchegg
 Touchégg is an app that runs in the background and transform the gestures you make on your touchpad or touchscreen into visible actions in your desktop. See [this](./touchegg) for more detail.
 
-### Ranger 
+### Ranger
 Ranger is a console file manager with VI key bindings. It provides a minimalistic and nice curses interface with a view on the directory hierarchy. See [this](./ranger) for more detail.
 
 ### Alacritty
@@ -47,8 +47,8 @@ See [this](./vim) for more detail.
 See [this](./nvim) for more detail.
 
 # Support
-Have included lot more things but not documented them 😅 . 
-Feel free to send a [pull request](https://github.com/rishav-singh-0/my-linux-config/pulls). 
+Have included lot more things but not documented them 😅 .
+Feel free to send a [pull request](https://github.com/rishav-singh-0/my-linux-config/pulls).
 Or if facing any difficulties feel free to write it in [issues](https://github.com/rishav-singh-0/my-linux-config/issues) section.
 
 It took a lot of work and time to make this possible. If you like the work just ⭐ on the repo would be very appreciated 😇.
