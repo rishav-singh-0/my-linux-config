@@ -45,7 +45,7 @@ function lfcd () {
 function pacinstall(){
     packages=$(sed 's/\n/ /g' <<< $(pacman -Slq | fzf -m --preview 'pacman -Si {1}'))
     if [ ! -z "$packages" ]; then
-        sudo pacman -S $packages
+        set -x && sudo pacman -S $packages
     fi
 }
 
@@ -53,16 +53,15 @@ function pacinstall(){
 function yayinstall(){
     packages=$(sed 's/\n/ /g' <<< $(yay -Slq | fzf -m --preview 'yay -Si {1}'))
     if [ ! -z "$packages" ]; then
-        sudo yay -S $packages
+        set -x && yay -S $packages
     fi
 }
 
 # Using fzf to select apt packages to install or search
-function aptinstall(){
-    packages=$(sed -z 's/\n/ /g' <<< $(apt-cache pkgnames | fzf -m --preview 'apt show {1}'))
-    apt-cache pkgnames | fzf -m --preview 'apt show {1}' | sed -z 's/\n/ /g'
-    if [ ! -z "$packages" ]; then
-        sudo apt install $packages
-    fi
+function aptinstall () {
+	packages=$(sed 's/\n/ /g' <<< $(apt-cache pkgnames | fzf -m --preview 'apt show {1}'))
+	if [ ! -z "$packages" ]; then
+		set -x && sudo apt install $packages
+	fi
 }
 
