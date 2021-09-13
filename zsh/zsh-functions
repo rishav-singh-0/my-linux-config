@@ -45,7 +45,7 @@ function lfcd () {
 function pacinstall(){
     packages=$(sed 's/\n/ /g' <<< $(pacman -Slq | fzf -m --preview 'pacman -Si {1}'))
     if [ ! -z "$packages" ]; then
-        set -x && sudo pacman -S $packages
+        set -x && sudo pacman -Sy $packages
     fi
 }
 
@@ -53,7 +53,7 @@ function pacinstall(){
 function yayinstall(){
     packages=$(sed 's/\n/ /g' <<< $(yay -Slq | fzf -m --preview 'yay -Si {1}'))
     if [ ! -z "$packages" ]; then
-        set -x && yay -S $packages
+        set -x && yay -Sy $packages
     fi
 }
 
