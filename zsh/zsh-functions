@@ -43,25 +43,26 @@ function lfcd () {
 
 # Using fzf to select pacman packages to install or search
 function pacinstall(){
-    packages=$(sed 's/\n/ /g' <<< $(pacman -Slq | fzf -m --preview 'pacman -Si {1}'))
+    packages=$(pacman -Slq | fzf --multi --preview 'pacman -Si {1}')
     if [ ! -z "$packages" ]; then
-        set -x && sudo pacman -S $packages
+        set -x && sudo pacman -S $(echo $packages)
     fi
 }
 
 # Using fzf to select yay packages to install or search
 function yayinstall(){
-    packages=$(sed 's/\n/ /g' <<< $(yay -Slq | fzf -m --preview 'yay -Si {1}'))
+    packages=$(pacman -Slq | fzf --multi --preview 'pacman -Si {1}')
     if [ ! -z "$packages" ]; then
-        set -x && yay -S $packages
+        set -x && yay -Sy $(echo $packages)
     fi
 }
 
 # Using fzf to select apt packages to install or search
 function aptinstall () {
 	packages=$(sed 's/\n/ /g' <<< $(apt-cache pkgnames | fzf -m --preview 'apt show {1}'))
-	if [ ! -z "$packages" ]; then
-		set -x && sudo apt install $packages
+	if [ ! -z "$packages" ]
+	then
+        set -x && sudo apt install $(echo $packages)
 	fi
 }
 
