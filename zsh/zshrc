@@ -84,14 +84,8 @@ bindkey -s '^a' 'aptinstall^M'
 # Use lf to switch directories and bind it to ctrl-o
 bindkey -s '^o' 'lfcd^M'
 
-bindkey -s '^a' 'bc -lq^M'
+# bindkey -s '^a' 'bc -lq^M'
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"^M'
 
-# FZF
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# [ -f $ZDOTDIR/completion/_fnm ] && fpath+="$ZDOTDIR/completion/"
-# export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 compinit
 

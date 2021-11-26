@@ -8,6 +8,12 @@ export MANWIDTH=999
 # eval "$(zoxide init zsh)"
 # eval "`pip completion --zsh`"
 
+# FZF
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f $ZDOTDIR/completion/_fnm ] && fpath+="$ZDOTDIR/completion/"
+# export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

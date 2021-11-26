@@ -43,9 +43,13 @@ For `exa`, refer: https://github.com/ogham/exa/#installation
 
 For `fzf`, refer: https://github.com/junegunn/fzf#installation
 
+For `fd`, refer: https://github.com/sharkdp/fd#installation
+
+For `ripgrep`, refer: https://github.com/BurntSushi/ripgrep#installation
+
 ### Arch based
 ```
-sudo pacman -S ranger exa fzf fd neovim
+sudo pacman -S ranger exa fzf fd neovim ripgrep
 ```
 
 ## Key Bindings
