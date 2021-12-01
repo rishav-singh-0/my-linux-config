@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# OCR of selected area and copy it to clipboard
+maim -s | tesseract stdin stdout --dpi 150 | xclip -selection clipboard
+
+
