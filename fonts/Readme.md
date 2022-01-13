@@ -13,3 +13,9 @@ cp -r ./fonts/* ~/.local/share/fonts/
 fc-cache -f -v
 ```
 
+## Debug
+
+Search if font is installed
+```
+fc-list | grep 'fontname'
+```
