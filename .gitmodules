@@ -1,0 +1,9 @@
+[submodule "ranger/plugins/ranger-fzf-marks"]
+	path = ranger/plugins/ranger-fzf-marks
+	url = https://github.com/laggardkernel/ranger-fzf-marks.git
+[submodule "ranger/plugins/ranger-archives"]
+	path = ranger/plugins/ranger-archives
+  url = https://github.com/maximtrp/ranger-archives.gi
+[submodule "ranger/plugins/ranger-gitplug"]
+	path = ranger/plugins/ranger-gitplug
+  url = https://github.com/yonghie/ranger-gitplug.git
