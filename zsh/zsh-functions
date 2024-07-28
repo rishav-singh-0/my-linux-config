@@ -51,18 +51,17 @@ function pacinstall(){
 
 # Using fzf to select yay packages to install or search
 function yayinstall(){
-    packages=$(pacman -Slq | fzf --multi --preview 'pacman -Si {1}')
+    packages=$(paru -Slq | fzf --multi --preview 'paru -Si {1}')
     if [ ! -z "$packages" ]; then
-        set -x && yay -Sy $(echo $packages)
+        set -x && paru -Sy $(echo $packages)
     fi
 }
 
 # Using fzf to select apt packages to install or search
 function aptinstall () {
 	packages=$(sed 's/\n/ /g' <<< $(apt-cache pkgnames | fzf -m --preview 'apt show {1}'))
-	if [ ! -z "$packages" ]
-	then
-        set -x && sudo apt install $(echo $packages)
+	if [ ! -z "$packages" ]; then
+	    set -x && sudo apt install $(echo $packages)
 	fi
 }
 

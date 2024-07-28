@@ -208,7 +208,7 @@ alias ..="cd .."\
     ...="cd ../.."\
     ....="cd ../../.."
 
-alias va="vim ~/.config/shell/shell_aliases.sh"
+alias s="kitten ssh"
 
 # git
 alias g="git"\
