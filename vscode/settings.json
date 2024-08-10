@@ -1,0 +1,96 @@
+{
+    "workbench.colorTheme": "Default High Contrast",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.sideBar.location": "right",
+    "terminal.external.linuxExec": "/usr/bin/zsh",
+    "terminal.integrated.gpuAcceleration": "on",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "workbench.settings.applyToAllProfiles": [
+        "editor.minimap.enabled"
+    ],
+    "editor.copyWithSyntaxHighlighting": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "window.newWindowDimensions": "inherit",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "files.trimTrailingWhitespace": true,
+    "diffEditor.renderSideBySide": false,
+    "editor.snippetSuggestions": "top",
+    "editor.detectIndentation": false,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "workbench.editor.showTabs": "multiple",
+    "editor.minimap.enabled": false,
+    "editor.guides.indentation": false,
+    "editor.definitionLinkOpensInPeek": true,
+    "files.autoSave": "afterDelay",
+
+    // Typography
+    "editor.fontFamily": "Geist Mono, JetBrains Mono, Fira Code",
+    "editor.suggestFontSize": 16,
+    "editor.suggestLineHeight": 30,
+    "terminal.integrated.lineHeight": 1.5,
+    "terminal.integrated.fontSize": 16,
+
+    "search.exclude": {
+        // Hide everything in /vendor, except the "laravel" and "livewire" folder.
+        "**/vendor/{[^l],?[^ai]}*": true,
+        // Hide everything in /public, except "index.php"
+        "**/public/{[^i],?[^n]}*": true,
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/_ide_helper.php": true,
+        "**/composer.lock": true,
+        "**/package-lock.json": true,
+        "storage": true,
+        ".phpunit.result.cache": true
+    },
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+   "security.workspace.trust.untrustedFiles": "open",
+   "editor.linkedEditing": true,
+   "editor.formatOnSave": false,
+   "diffEditor.wordWrap": "on",
+   "editor.fontSize": 16,
+   "editor.minimap.maxColumn": 250,
+   "editor.accessibilitySupport": "off",
+   "editor.wordWrap": "wordWrapColumn",
+   "editor.fontWeight": "400",
+   "editor.inlineSuggest.suppressSuggestions": true,
+   "editor.padding.top": 16,
+   "editor.cursorBlinking": "solid",
+   "editor.stickyScroll.enabled": false,
+   "editor.lineHeight": 24,
+
+   "editor.tokenColorCustomizations": {
+    "textMateRules": [
+        {
+          "scope": [
+            "comment",
+            "keyword",
+            "variable.language",
+            "entity.other.attribute-name.html",
+            "entity.other.attribute-name",
+            "keyword.control",
+            "storage.type",
+            "comment",
+            "comment.block",
+            "comment.line"
+          ],
+          "settings": {
+            "fontStyle": ""
+          }
+        }
+      ]
+    },
+    "material-icon-theme.saturation": 0,
+    "material-icon-theme.files.color": "#42a5f5",
+    "workbench.tree.enableStickyScroll": false,
+    "vscode_custom_css.imports": [
+        "files:///home/rishav/.config/Code - OSS/User/custom-vscode.css",
+        "files:///home/rishav/.config/Code - OSS/User/custom-vscode.js"
+    ],
+}
