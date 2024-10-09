@@ -1,0 +1,38 @@
+
+[opener]
+edit = [
+    { run = 'nvim "$@"', block = true, for = "unix" },
+]
+play = [
+	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+]
+open = [
+    { run = 'xdg-open "$@"', desc = "Open" },
+    # { run = 'okular "$@"', desc = "Open with okular" },
+]
+
+[open]
+rules = [
+    { name = "*.html", use = [ "open", "edit" ] },
+    { mime = "text/*", use = "edit" },
+    { mime = "video/*", use = "play" },
+    { mime = "image/*", use = "open" },
+    { mime = "application/pdf", use = "open" },
+    { mime = "application/*sheet", use = "open" },
+    { mime = "application/*excel", use = "open" },
+]
+append_rules = [
+    { name = "*", use = "open" },
+]
+
+[manager]
+linemode = "size"
+
+[plugin]
+prepend_previewers = [
+    { name = "*.ko", run = "modinfo" },
+]
+append_preloaders = [
+    { mime = "image", run = "file" },
+    { name = "*.pdf", run = "file" },
+]

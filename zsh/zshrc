@@ -1,5 +1,4 @@
 
-
 export ZDOTDIR=$HOME/.config/zsh
 
 #    ______                      __     __  _                 
@@ -13,6 +12,7 @@ zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' menu select
+# zstyle ':completion:*' menu select completer _expand _complete _ignored
 zstyle :compinstall filename '/home/rishav/.config/zsh/zshrc'
 
 _comp_options+=(globdots)               # Include hidden files
@@ -31,8 +31,9 @@ compinit
 HISTFILE=$ZDOTDIR/zsh_history
 HISTSIZE=10000
 SAVEHIST=1000000
-setopt appendhistory
+setopt appendhistory        # Will be helpful if multiple settions are open
 setopt sharehistory
+setopt hist_ignore_dups     # Dont store same command in history
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_find_no_dups
@@ -50,11 +51,13 @@ setopt nomatch
 setopt auto_cd              # Automatically cd into typed directory.
 setopt auto_list
 setopt extendedglob
-setopt hist_ignore_dups     # Dont store same command in history
 setopt interactive_comments
+# setopt menucomplete
 stty stop undef                 # Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
 
+# Colors
+autoload -Uz colors && colors
 
 # Useful Functions 
 source "$ZDOTDIR/zsh-functions"  
@@ -67,6 +70,9 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting" 
 zsh_add_plugin "hlissner/zsh-autopair" 
 zsh_add_plugin "hlissner/"
+
+# beeping is annoying
+unsetopt BEEP
 
 #export MANPAGER='nvim +Man!'
 #export MANWIDTH=999
@@ -86,24 +92,26 @@ autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-# Colors
-autoload -Uz colors && colors
-
 # Key-bindings
-bindkey -s '^n' 'vim $(fzf)^M'
-bindkey '^[[P' delete-char
+# bindkey -s '^n' 'vim $(fzf)^M'
+# bindkey '^[[P' delete-char
 # bindkey "^p" up-line-or-beginning-search # Up
 # bindkey "^n" down-line-or-beginning-search # Down
 # bindkey "^k" up-line-or-beginning-search # Up
 # bindkey "^j" down-line-or-beginning-search # Down
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
 
 # Move with ctrl + arrows
 bindkey '^[[1;5C' forward-word          # ctrl right arrow
 bindkey '^[[1;5D' backward-word         # ctrl left arrow
 bindkey '^H'      backward-delete-word  # ctrl Backspace
 bindkey '^[[3;5~' delete-word           # ctrl Delete
-bindkey '^[[3;~'  delete-char           # ctrl Delete
-bindkey '^L'      clear-screen          # ctrl Shift L
+# bindkey '^[[3;~'  delete-char           # ctrl Delete
+# bindkey '^L'      clear-screen          # ctrl Shift L
 bindkey '^K'      run-help              # eg. foo --> man foo
 
 # Edit line in vim with ctrl-e:
@@ -124,63 +132,8 @@ bindkey -s '^o' 'lfcd^M'
 # bindkey -s '^a' 'bc -lq^M'
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"^M'
 
-#     ___________   ______
-#    / ____/__  /  / ____/
-#   / /_     / /  / /_    
-#  / __/    / /__/ __/    
-# /_/      /____/_/       
-
-# Set up fzf key bindings and fuzzy completion
-eval "$(fzf --zsh)"
-
-# --- setup fzf theme ---
-fg="#CBE0F0"
-bg="#011628"
-bg_highlight="#143652"
-purple="#B388FF"
-blue="#06BCE4"
-cyan="#2CF9ED"
-
-export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
-
-# -- Use fd instead of fzf --
-
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --follow --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-
-# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
-}
-
-show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
-
-export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-
-# Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments to fzf.
-_fzf_comprun() {
-  local command=$1
-  shift
-
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
-  esac
-}
-
+# Serial Monitor
+bindkey -s '^b' 'cu --line /dev/ttyUSB0 --speed 115200^M'
 
 #     _    _ _
 #    / \  | (_) __ _ ___  ___  ___

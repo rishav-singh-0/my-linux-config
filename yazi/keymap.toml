@@ -1,0 +1,4 @@
+[manager]
+prepend_keymap = [
+	# { on = "<C-a>", run = 'my-fev-command1', desc = "Just for test!" },
+]

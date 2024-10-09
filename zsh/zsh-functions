@@ -41,6 +41,14 @@ function lfcd () {
     fi
 }
 
+function fzf-ps () {
+  (date; ps -ef) |
+    fzf --bind='ctrl-r:reload(date; ps -ef)' \
+        --header=$'Press CTRL-R to reload\n\n' --header-lines=2 \
+        --preview='echo {}' --preview-window=down,3,wrap \
+        --layout=reverse --height=80% | awk '{print $2}' | xargs kill -9
+}
+
 # Using fzf to select pacman packages to install or search
 function pacinstall(){
     packages=$(pacman -Slq | fzf --multi --preview 'pacman -Si {1}')
@@ -63,5 +71,9 @@ function aptinstall () {
 	if [ ! -z "$packages" ]; then
 	    set -x && sudo apt install $(echo $packages)
 	fi
+}
+
+function t () {
+  telnet 192.168.$1
 }
 
