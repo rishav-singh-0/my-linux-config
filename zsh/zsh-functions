@@ -73,7 +73,22 @@ function aptinstall () {
 	fi
 }
 
+# Yazi File-Manager
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 function t () {
   telnet 192.168.$1
 }
 
+function env-cross-compile () {
+  declare -x ARCH="arm"
+  declare -x CROSS_COMPILE="arm-linux-gnueabihf-"
+  export PATH=/opt/gcc-9.1.0-2019.11-x86_64_arm-linux-gnueabihf/bin:$PATH
+}

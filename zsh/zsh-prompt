@@ -32,6 +32,37 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})"
 
 # format our main prompt for hostname current folder, and permissions.
-PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[magenta]%}@%{$fg[blue]%}%m%{$fg[red]%}] %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}"
+PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[magenta]%}%{$fg[red]%}] %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%3~%{$reset_color%}"
 PROMPT+="\$vcs_info_msg_0_ "
 
+
+# Execution Time
+function preexec() {
+  #timer=$(($(print -P %D{%s%6.})/1000))
+  timer=$(print -P %D{%s%3.})
+}
+
+function precmd() {
+  if [ $timer ]; then
+    # now=$(($(print -P %D{%s%6.})/1000))
+    now=$(print -P %D{%s%3.})
+        local d_ms=$(($now - $timer))
+    local d_s=$((d_ms / 1000))
+    local ms=$((d_ms % 1000))
+    local s=$((d_s % 60))
+    local m=$(((d_s / 60) % 60))
+    local h=$((d_s / 3600))
+
+    if   ((h > 0)); then elapsed=${h}h${m}m${s}s
+    elif ((m > 0)); then elapsed=${m}m${s}.$(printf $(($ms / 100)))s # 1m12.3s
+    elif ((s > 9)); then elapsed=${s}.$(printf %02d $(($ms / 10)))s # 12.34s
+    elif ((s > 0)); then elapsed=${s}.$(printf %03d $ms)s # 1.234s
+    else elapsed=${ms}ms
+    fi
+
+    export RPROMPT="%F{cyan}${elapsed}%{$reset_color%}"
+    unset timer
+  else
+      unset RPROMPT
+  fi
+}
