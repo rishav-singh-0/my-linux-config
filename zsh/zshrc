@@ -52,6 +52,7 @@ setopt auto_cd              # Automatically cd into typed directory.
 setopt auto_list
 setopt extendedglob
 setopt interactive_comments
+setopt CORRECT
 # setopt menucomplete
 stty stop undef                 # Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
@@ -64,6 +65,7 @@ source "$ZDOTDIR/zsh-functions"
 
 # Normal files to source 
 #zsh_add_file "zsh-vim-mode" 
+zsh_add_file "zsh-fzf"
 zsh_add_file "zsh-prompt"  
 # Plugins 
 zsh_add_plugin "zsh-users/zsh-autosuggestions" 
@@ -177,6 +179,7 @@ alias gl="git log --oneline | fzf --multi --preview 'git show {+1}'"
 # Django
 alias pm="python manage.py"
 
+export SVN_HOME_DIR=/home/rishav/svnHome
 
 #     _______   ______ 
 #    / ____/ | / / __ \

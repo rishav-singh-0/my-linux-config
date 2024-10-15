@@ -92,3 +92,7 @@ function env-cross-compile () {
   declare -x CROSS_COMPILE="arm-linux-gnueabihf-"
   export PATH=/opt/gcc-9.1.0-2019.11-x86_64_arm-linux-gnueabihf/bin:$PATH
 }
+
+function svn-checkout(){
+  svn checkout svn://192.168.100.5/$1 ~/svnHome/$1
+}
