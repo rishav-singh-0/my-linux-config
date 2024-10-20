@@ -1,12 +1,12 @@
 
 export ZDOTDIR=$HOME/.config/zsh
 
-#    ______                      __     __  _                 
+#    ______                      __     __  _
 #   / ____/___  ____ ___  ____  / /__  / /_(_)___  ____  _____
 #  / /   / __ \/ __ `__ \/ __ \/ / _ \/ __/ / __ \/ __ \/ ___/
-# / /___/ /_/ / / / / / / /_/ / /  __/ /_/ / /_/ / / / (__  ) 
-# \____/\____/_/ /_/ /_/ .___/_/\___/\__/_/\____/_/ /_/____/  
-#                     /_/                                     
+# / /___/ /_/ / / / / / / /_/ / /  __/ /_/ / /_/ / / / (__  )
+# \____/\____/_/ /_/ /_/ .___/_/\___/\__/_/\____/_/ /_/____/
+#                     /_/
 
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' list-colors ''
@@ -20,13 +20,13 @@ autoload -Uz compinit
 zmodload zsh/complist
 compinit
 
-# 
-#     __  ___      __                  
+#
+#     __  ___      __
 #    / / / (_)____/ /_____  _______  __
 #   / /_/ / / ___/ __/ __ \/ ___/ / / /
-#  / __  / (__  ) /_/ /_/ / /  / /_/ / 
-# /_/ /_/_/____/\__/\____/_/   \__, /  
-#                             /____/   
+#  / __  / (__  ) /_/ /_/ / /  / /_/ /
+# /_/ /_/_/____/\__/\____/_/   \__, /
+#                             /____/
 
 HISTFILE=$ZDOTDIR/zsh_history
 HISTSIZE=10000
@@ -39,12 +39,12 @@ setopt hist_save_no_dups
 setopt hist_find_no_dups
 
 
-#    ____        __  _                 
+#    ____        __  _
 #   / __ \____  / /_(_)___  ____  _____
 #  / / / / __ \/ __/ / __ \/ __ \/ ___/
-# / /_/ / /_/ / /_/ / /_/ / / / (__  ) 
-# \____/ .___/\__/_/\____/_/ /_/____/  
-#     /_/                              
+# / /_/ / /_/ / /_/ / /_/ / / / (__  )
+# \____/ .___/\__/_/\____/_/ /_/____/
+#     /_/
 #[https://zsh.sourceforge.io/Doc/Release/Options.html]
 
 setopt nomatch
@@ -60,17 +60,17 @@ zle_highlight=('paste:none')
 # Colors
 autoload -Uz colors && colors
 
-# Useful Functions 
-source "$ZDOTDIR/zsh-functions"  
+# Useful Functions
+source "$ZDOTDIR/zsh-functions"
 
-# Normal files to source 
-#zsh_add_file "zsh-vim-mode" 
+# Normal files to source
+#zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-fzf"
-zsh_add_file "zsh-prompt"  
-# Plugins 
-zsh_add_plugin "zsh-users/zsh-autosuggestions" 
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting" 
-zsh_add_plugin "hlissner/zsh-autopair" 
+zsh_add_file "zsh-prompt"
+# Plugins
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "hlissner/zsh-autopair"
 
 # beeping is annoying
 unsetopt BEEP
@@ -79,12 +79,12 @@ unsetopt BEEP
 #export MANWIDTH=999
 
 
-#     ____  _           ___                 
+#     ____  _           ___
 #    / __ )(_)___  ____/ (_)___  ____ ______
 #   / __  / / __ \/ __  / / __ \/ __ `/ ___/
-#  / /_/ / / / / / /_/ / / / / / /_/ (__  ) 
-# /_____/_/_/ /_/\__,_/_/_/ /_/\__, /____/  
-#                             /____/        
+#  / /_/ / / / / / /_/ / / / / / /_/ (__  )
+# /_____/_/_/ /_/\__,_/_/_/ /_/\__, /____/
+#                             /____/
 
 bindkey -e
 
@@ -179,11 +179,11 @@ alias gl="git log --oneline | fzf --multi --preview 'git show {+1}'"
 # Django
 alias pm="python manage.py"
 
+export PATH="$HOME/.local/bin:$PATH"
 export SVN_HOME_DIR=/home/rishav/svnHome
 
-#     _______   ______ 
+#     _______   ______
 #    / ____/ | / / __ \
 #   / __/ /  |/ / / / /
-#  / /___/ /|  / /_/ / 
-# /_____/_/ |_/_____/  
-                     
+#  / /___/ /|  / /_/ /
+# /_____/_/ |_/_____/
