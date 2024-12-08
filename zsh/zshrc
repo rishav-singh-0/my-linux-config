@@ -123,9 +123,7 @@ bindkey '^e' edit-command-line
 bindkey -s '^@' 'yazi^M'
 
 # Search packages in Package manager
-# bindkey -s '^p' 'pacinstall^M'
-# bindkey -s '^y' 'yayinstall^M'
-bindkey -s '^a' 'aptinstall^M'
+bindkey -s '^a' 'pkgsearch^M'
 
 # Use lf to switch directories and bind it to ctrl-o
 bindkey -s '^y' 'y^M'
@@ -153,25 +151,25 @@ alias c="clear"
 alias ls="exa -h --color=automatic --icons --group-directories-first"
 #alias ls="ls --color=auto"
 alias l="ls -F"\
-    ll="ls -laF "\
-    la="ls -aF"\
-    l2="ls --tree --level=2"\
-    l3="ls --tree --level=3"
+	ll="ls -laF "\
+	la="ls -aF"\
+	l2="ls --tree --level=2"\
+	l3="ls --tree --level=3"
 
 # cd
 alias ..="cd .."\
-    ...="cd ../.."\
-    ....="cd ../../.."
+	...="cd ../.."\
+	....="cd ../../.."
 
 alias s="kitten ssh"
 
 # git
 alias g="git"\
-    gs="git status"\
-    gf="git fetch"\
-    gp="git push"\
-    gpul="git pull"\
-    gck="git checkout"
+	gs="git status"\
+	gf="git fetch"\
+	gp="git push"\
+	gpul="git pull"\
+	gck="git checkout"
 
 # fzf search
 alias gl="git log --oneline | fzf --multi --preview 'git show {+1}'"
@@ -179,7 +177,7 @@ alias gl="git log --oneline | fzf --multi --preview 'git show {+1}'"
 # Django
 alias pm="python manage.py"
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
 export SVN_HOME_DIR=/home/rishav/svnHome
 
 #     _______   ______
