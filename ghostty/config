@@ -1,0 +1,5 @@
+
+font-family = "CaskaydiaCove Nerd Font"
+command = /usr/bin/zsh
+shell-integration=zsh
+theme=MaterialDesignColors

@@ -1,4 +1,3 @@
-
 hide_scroll=true
 show=drun
 width=30%
@@ -13,7 +12,7 @@ layer=overlay
 allow_images=true
 #sort_order=alphabetical
 gtk_dark=true
-prompt=
+prompt=Search
 image_size=20
 display_generic=false
 location=center
