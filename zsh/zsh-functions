@@ -150,6 +150,49 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+sftp_transfer() {
+	# Check if the number of arguments is correct
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: sftp_transfer <sftp_host> <file_list>"
+        return 1
+    fi
+
+    local SFTP_HOST="$1"
+    local FILE_LIST="$2"
+    local SFTP_USER="root"
+    local SFTP_PASS="xirtam"
+
+    if [[ ! -f "$FILE_LIST" ]]; then
+        echo "File list '$FILE_LIST' does not exist."
+        return 1
+    fi
+
+    # Check if sshpass is installed
+    if ! command -v sshpass &> /dev/null; then
+        echo "Error: sshpass is not installed. Please install it and try again."
+        return 1
+    fi
+
+    # Execute the SFTP transfer
+    sshpass -p "$SFTP_PASS" sftp $SFTP_USER@$SFTP_HOST <<EOF
+$(while IFS= read -r line; do
+    [[ -z "$line" ]] && continue
+    SRC_PATH=$(echo $line | awk '{print $1}')
+    DEST_PATH=$(echo $line | awk '{print $2}')
+    echo "put $SRC_PATH $DEST_PATH"
+done < "$FILE_LIST")
+EOF
+
+    # Check the exit status of the SFTP command
+    if [ $? -ne 0 ]; then
+        echo "Error: SFTP transfer failed."
+        return 1
+    fi
+
+    echo "SFTP transfer completed successfully."
+
+}
+
 function t () {
   telnet 192.168.$1
 }
