@@ -1,0 +1,9 @@
+BasedOnStyle: LLVM
+IndentWidth: 4                  # Number of spaces for each indentation level
+TabWidth: 4                     # Width of tab characters
+UseTab: Always                  # Use tabs instead of spaces
+BreakBeforeBraces: Allman       # Place braces on a new line
+AllowShortFunctionsOnASingleLine: Empty   # Don't allow short functions to be single-line
+ColumnLimit: 135                # Maximum characters per line
+SortIncludes: true              # Sort #include directives alphabetically
+SpaceAfterCStyleCast: true      # Add space after a C-style cast

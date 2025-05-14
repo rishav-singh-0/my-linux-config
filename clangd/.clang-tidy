@@ -1,0 +1,11 @@
+Checks: >
+  - readability-identifier-naming,
+  - readability-function-size,
+  - modernize-use-nullptr,
+  - misc-misplaced-widening-cast
+
+CheckOptions:
+  - { key: readability-identifier-naming.VariableCase, value: lower_case }
+  - { key: readability-identifier-naming.StructCase, value: CamelCase }
+  - { key: readability-identifier-naming.EnumCase, value: UPPER_CASE }
+  - { key: readability-identifier-naming.FunctionCase, value: camelBack }
