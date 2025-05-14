@@ -2,10 +2,6 @@
 prepend_keymap = [
 	# { on = "<C-a>", run = 'my-fev-command1', desc = "Just for test!" },
 	{ on = [ "g", "s" ], run = 'cd ~/Public', desc = "Go to Shared directory" },
-	{ on = [ "g", "s" ], run = 'cd ~/svnHome/Briefcase/SWD_Briefcase/Security', desc = "Go to SDK Source Dir" },
-	{ on = [ "g", "p" ], run = 'cd ~/svnHome/Briefcase/SWD_Briefcase/GenericSoftwareModules/Platform/SWD/Trunk/Source', desc = "Go to Platrorm Source" },
-	{ on = [ "g", "r" ], run = 'cd ~/svnHome/Briefcase/SWD_Briefcase/GenericSoftwareModules/Platform/Software_Releases', desc = "Go to Platform Release" },
-	{ on = [ "g", "b" ], run = 'cd ~/svnHome/Briefcase/SWD_Briefcase/GenericSoftwareModules/Platform/SWD/Trunk/Source/build', desc = "Go to Platform Build" },
-	{ on = [ "g", "a" ], run = 'cd ~/svnHome/Products/Matrix_IPCamera_Netra5000/SDT/V2/Build/Branches/V04R01/Source', desc = "Go to Application Build" },
 	{ on = [ "g", "t" ], run = 'cd ~/tftpboot', desc = "Go to TFTP HOME" },
+	{ on = [ "g", "r" ], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "Go to git root" },
 ]

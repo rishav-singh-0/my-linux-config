@@ -12,6 +12,10 @@ open = [
 ]
 
 [open]
+prepend_rules = [
+    # Archive
+    { mime = "application/xz", use = [ "extract", "reveal" ] },
+]
 rules = [
     { name = "*.html", use = [ "open", "edit" ] },
     { mime = "text/*", use = "edit" },
@@ -32,9 +36,6 @@ linemode = "size"
 
 [plugin]
 prepend_previewers = [
+    # Kernel Objects(driver)
     { name = "*.ko", run = "modinfo" },
-]
-append_preloaders = [
-    { mime = "image", run = "file" },
-    { name = "*.pdf", run = "file" },
 ]
