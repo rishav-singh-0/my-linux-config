@@ -3,3 +3,13 @@ font-family = "CaskaydiaCove Nerd Font"
 command = /usr/bin/zsh
 shell-integration=zsh
 theme=MaterialDesignColors
+
+background-opacity = 0.95
+background-blur-radius = 20
+
+scrollback-limit = 1000000000
+window-save-state = always
+gtk-tabs-location = bottom
+auto-update=off
+gtk-wide-tabs = false
+
