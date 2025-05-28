@@ -12,4 +12,3 @@ window-save-state = always
 gtk-tabs-location = bottom
 auto-update=off
 gtk-wide-tabs = false
-

@@ -38,7 +38,7 @@
 		"on-click":"hyprctl dispatch -- exec wofi"
 	},
 	"hyprland/window": {
-		"max-length": 30, // Characters count
+		"max-length": 40, // Characters count
 		"separate-outputs": true,
 		"icon": true
 	},
@@ -49,14 +49,7 @@
 		"tooltip-format": "{title}",
 		"on-click": "activate",
 		"on-click-middle": "close",
-		"ignore-list": ["Alacritty", "kitty"],
-		"app_ids-mapping": {
-			"firefoxdeveloperedition": "firefox-developer-edition"
-		},
-		"rewrite": {
-			"Firefox Web Browser": "Firefox",
-			"Foot Server": "Terminal"
-		}
+		//"ignore-list": ["Alacritty", "kitty"],
 	},
 	"keyboard-state": {
 		"numlock": true,
