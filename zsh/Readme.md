@@ -61,14 +61,9 @@ sudo pacman -S ranger exa fzf fd neovim ripgrep
 - **Ctrl + r** : Search in history using `fzf`
 - **Ctrl + k** : Read manual page for specific command eg. foo --> man foo
 
-### Debian specific bindings
+### Package manager binding
 
-- **Ctrl + a** : Launches pacinstall script which use `fzf` and `apt` package manager to search and install program
-
-### Arch specific bindings
-
-- **Ctrl + p** : Launches aptinstall script which use `fzf` and `pacman` package manager to search and install program
-- **Ctrl + y** : Launches yayinstall script which use `fzf` and `yay` package manager to search and install program
+- **Ctrl + a** : Launches `pkgsearch`, which auto-detects and searches the available package manager (`apt`, `pacman`, `yay`, `paru`, `dnf`, `zypper`, or `brew`)
 
 ## Troubleshooting
 

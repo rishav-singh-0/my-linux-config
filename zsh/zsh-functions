@@ -55,11 +55,12 @@ function pkgsearch() {
 	local log_enabled=true
 	local log_file=~/pkgsearch.log
 	local log_max_size=1048576 # 1 MB in bytes
+	local packages
 
 	# Validate the input package manager
 	if [ -n "$pkg_manager" ]; then
 		case "$pkg_manager" in
-			pacman|yay|paru|apt|dnf|zypper)
+			pacman|yay|paru|apt|dnf|zypper|brew)
 				;; # Valid package manager
 			*)
 				echo "Invalid package manager specified: $pkg_manager" >&2
@@ -82,8 +83,10 @@ function pkgsearch() {
 			pkg_manager="dnf"
 		elif command -v zypper &>/dev/null; then
 			pkg_manager="zypper"
+		elif command -v brew &>/dev/null; then
+			pkg_manager="brew"
 		else
-			echo "Supported package manager not found (pacman, yay, paru, apt, dnf, zypper)." >&2
+			echo "Supported package manager not found (pacman, yay, paru, apt, dnf, zypper, brew)." >&2
 			return 1
 		fi
 	fi
@@ -91,49 +94,83 @@ function pkgsearch() {
 	# Perform fuzzy search and preview based on the package manager
 	case "$pkg_manager" in
 		pacman|yay|paru)
-		local packages=$($pkg_manager -Slq | fzf --multi --preview "$pkg_manager -Si {1}")
+			packages=$($pkg_manager -Slq | fzf --multi --preview "$pkg_manager -Si {1}")
 			;;
 		apt)
-			local packages=$(apt-cache pkgnames | fzf --multi --preview 'apt show {1}')
+			packages=$(apt-cache pkgnames | fzf --multi --preview 'apt show {1}')
 			;;
 		dnf)
-			local packages=$(dnf list available --quiet | awk '{print $1}' | fzf --multi --preview 'dnf info {1}')
+			packages=$(dnf list available --quiet | awk '{print $1}' | fzf --multi --preview 'dnf info {1}')
 			;;
-	zypper)
-			local packages=$(zypper search --type package | awk 'NR>2 {print $3}' | fzf --multi --preview 'zypper info {1}')
+		zypper)
+			packages=$(zypper search --type package | awk 'NR>2 {print $3}' | fzf --multi --preview 'zypper info {1}')
 			;;
-	*)
+		brew)
+			packages=$((
+				HOMEBREW_NO_AUTO_UPDATE=1 brew formulae | awk '{print "formula\t" $0}'
+				HOMEBREW_NO_AUTO_UPDATE=1 brew casks | awk '{print "cask\t" $0}'
+			) | fzf --multi --delimiter=$'\t' --with-nth=2 \
+				--preview='if [ "{1}" = "cask" ]; then HOMEBREW_NO_AUTO_UPDATE=1 brew info --cask {2}; else HOMEBREW_NO_AUTO_UPDATE=1 brew info {2}; fi')
+			;;
+		*)
 			echo "Unsupported package manager: $pkg_manager" >&2
 			return 1
 			;;
 	esac
 
 	# Install selected packages
-	if [ ! -z "$packages" ]; then
-		local install_command
+	if [ -n "$packages" ]; then
+		local install_status=0
+		local -a install_cmd
 		case "$pkg_manager" in
 			pacman)
-				install_command="sudo $pkg_manager -S $(echo $packages)"
+				install_cmd=(sudo "$pkg_manager" -S ${(f)packages})
 				;;
 			yay|paru)
-				install_command="$pkg_manager -S $(echo $packages)"
+				install_cmd=("$pkg_manager" -S ${(f)packages})
 				;;
 			apt)
-				install_command="sudo apt install $(echo $packages)"
+				install_cmd=(sudo apt install ${(f)packages})
 				;;
 			dnf)
-				install_command="sudo dnf install $(echo $packages)"
+				install_cmd=(sudo dnf install ${(f)packages})
+				;;
+			zypper)
+				install_cmd=(sudo zypper install ${(f)packages})
+				;;
+			brew)
+				while IFS=$'\t' read -r pkg_type pkg_name; do
+					[ -z "$pkg_name" ] && continue
+					if [ "$pkg_type" = "cask" ]; then
+						echo "HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask $pkg_name"
+						HOMEBREW_NO_AUTO_UPDATE=1 brew install --cask "$pkg_name" || install_status=1
+					else
+						echo "HOMEBREW_NO_AUTO_UPDATE=1 brew install $pkg_name"
+						HOMEBREW_NO_AUTO_UPDATE=1 brew install "$pkg_name" || install_status=1
+					fi
+					[ "$install_status" -ne 0 ] && break
+					done <<< "$packages"
 				;;
 		esac
-		set -x
-		eval $install_command && {
+
+		if [ "$pkg_manager" != "brew" ]; then
+			print -r -- "${(q)install_cmd}"
+			"${install_cmd[@]}"
+			install_status=$?
+		fi
+
+		if [ "$install_status" -eq 0 ]; then
 			if [ "$log_enabled" = true ]; then
-				if [ -f "$log_file" ] && [ $(stat -c%s "$log_file") -gt $log_max_size ]; then
+				if [ -f "$log_file" ] && [ "$(wc -c < "$log_file")" -gt "$log_max_size" ]; then
 					mv "$log_file" "${log_file}.old"
 				fi
-				echo "[$(date)]: $packages" >> "$log_file"
+				if [ "$pkg_manager" = "brew" ]; then
+					echo "$packages" | awk -F '\t' -v now="$(date)" '{print "[" now "]: brew " $1 " " $2}' >> "$log_file"
+				else
+					echo "[$(date)]: $packages" >> "$log_file"
+				fi
 			fi
-		}
+		fi
 	else
 		echo "No packages selected."
 	fi
