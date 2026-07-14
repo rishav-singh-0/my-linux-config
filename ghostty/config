@@ -1,14 +1,19 @@
 
-font-family = "CaskaydiaCove Nerd Font"
-command = /usr/bin/zsh
-shell-integration=zsh
-theme=MaterialDesignColors
+#font-family = "CaskaydiaCove Nerd Font"
+shell-integration = zsh
+shell-integration-features = ssh-terminfo,ssh-env
+shell-integration-features = sudo,cursor,title
 
+# Appearance
+theme = Neobones Dark
 background-opacity = 0.95
 background-blur-radius = 20
 
 scrollback-limit = 1000000000
 window-save-state = always
-gtk-tabs-location = bottom
+#gtk-tabs-location = bottom
 auto-update=off
-gtk-wide-tabs = false
+#gtk-wide-tabs = false
+
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+quick-terminal-position = bottom

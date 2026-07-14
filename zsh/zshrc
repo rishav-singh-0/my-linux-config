@@ -66,6 +66,7 @@ source "$ZDOTDIR/zsh-functions"
 # Normal files to source
 #zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-fzf"
+zsh_add_file ".env"
 zsh_add_file "zsh-prompt"
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
@@ -175,10 +176,13 @@ alias g="git"\
 alias gl="git log --oneline | fzf --multi --preview 'git show {+1}'"
 
 # Django
-alias pm="python manage.py"
+#alias pm="python manage.py"
 
-export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
-export SVN_HOME_DIR=/home/rishav/svnHome
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.local/bin"
+
+# Rust
+. "$HOME/.cargo/env"
 
 #     _______   ______
 #    / ____/ | / / __ \
